@@ -16,6 +16,8 @@ export default async function GamesPage() {
     },
   });
 
+  type GameWithRelations = typeof games[0];
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-[#f5f5f5] mb-6">Recent Games</h1>
@@ -24,7 +26,7 @@ export default async function GamesPage() {
         <p className="text-[#a3a3a3]">No games recorded yet.</p>
       ) : (
         <div className="space-y-4">
-          {games.map((game) => {
+          {games.map((game: GameWithRelations) => {
             const team1Won = game.team1Score > game.team2Score;
 
             return (
