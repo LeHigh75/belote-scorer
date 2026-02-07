@@ -80,6 +80,8 @@ export default async function RankingsPage() {
     };
   });
 
+  type PlayerStats = typeof playersWithStats[0];
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-[#f5f5f5] mb-6">ELO Rankings</h1>
@@ -99,7 +101,7 @@ export default async function RankingsPage() {
               </tr>
             </thead>
             <tbody>
-              {playersWithStats.map((player) => (
+              {playersWithStats.map((player: PlayerStats) => (
                 <tr
                   key={player.id}
                   className="border-t border-gray-800 hover:bg-[#252525] transition-colors"
