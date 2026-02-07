@@ -19,6 +19,7 @@ export async function createPlayer(name: string) {
 
   revalidatePath('/players');
   revalidatePath('/rankings');
+  revalidatePath('/games/new');
   return { success: true, player };
 }
 
@@ -62,5 +63,6 @@ export async function deletePlayer(id: string) {
 
   revalidatePath('/players');
   revalidatePath('/rankings');
+  revalidatePath('/games/new');
   return { success: true };
 }
