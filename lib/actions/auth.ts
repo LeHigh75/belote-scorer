@@ -8,13 +8,13 @@ export async function loginAction(formData: FormData) {
   const password = formData.get('password') as string;
 
   if (!username || !password) {
-    return { error: 'Username and password are required' };
+    redirect('/login?error=credentials');
   }
 
   const result = await loginUser(username, password);
 
   if (!result.success) {
-    return { error: result.error };
+    redirect('/login?error=invalid');
   }
 
   redirect('/rankings');
