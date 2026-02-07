@@ -44,10 +44,6 @@ export default function LoginPage() {
             Sign In
           </button>
         </form>
-
-        <p className="mt-6 text-center text-sm text-[#737373]">
-          Default credentials: admin / admin123
-        </p>
       </div>
     </div>
   );
