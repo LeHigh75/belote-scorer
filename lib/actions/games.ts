@@ -40,7 +40,7 @@ export async function recordGame(data: {
 
   // Create game and update ELOs in transaction
   try {
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Parameters<Parameters<typeof prisma.$transaction>[0]>[0]) => {
       const game = await tx.game.create({ data });
 
       // Fetch all players
