@@ -1,14 +1,62 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Player {
+  id               String        @id @default(cuid())
+  name             String        @unique
+  currentElo       Int           @default(1000)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  team1Player1Games Game[]       @relation("Team1Player1")
+  team1Player2Games Game[]       @relation("Team1Player2")
+  team2Player1Games Game[]       @relation("Team2Player1")
+  team2Player2Games Game[]       @relation("Team2Player2")
+  eloHistory       EloHistory[]
+}
+
+model Game {
+  id            String   @id @default(cuid())
+  team1Player1Id String
+  team1Player2Id String
+  team1Score     Int
+  team2Player1Id String
+  team2Player2Id String
+  team2Score     Int
+  createdAt     DateTime @default(now())
+
+  team1Player1  Player   @relation("Team1Player1", fields: [team1Player1Id], references: [id])
+  team1Player2  Player   @relation("Team1Player2", fields: [team1Player2Id], references: [id])
+  team2Player1  Player   @relation("Team2Player1", fields: [team2Player1Id], references: [id])
+  team2Player2  Player   @relation("Team2Player2", fields: [team2Player2Id], references: [id])
+
+  eloHistory    EloHistory[]
+}
+
+model EloHistory {
+  id        String   @id @default(cuid())
+  playerId  String
+  gameId    String
+  eloAfter  Int
+  eloBefore Int
+  change    Int
+  createdAt DateTime @default(now())
+
+  player    Player   @relation(fields: [playerId], references: [id])
+  game      Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@index([playerId])
+  @@index([gameId])
 }
