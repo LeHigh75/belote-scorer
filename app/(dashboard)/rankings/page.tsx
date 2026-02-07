@@ -50,19 +50,21 @@ export default async function RankingsPage() {
 
     let wins = 0;
 
+    type GameScore = { team1Score: number; team2Score: number };
+
     // Count wins from team1 games (player was on team 1)
-    player.team1Player1Games.forEach((game) => {
+    player.team1Player1Games.forEach((game: GameScore) => {
       if (game.team1Score > game.team2Score) wins++;
     });
-    player.team1Player2Games.forEach((game) => {
+    player.team1Player2Games.forEach((game: GameScore) => {
       if (game.team1Score > game.team2Score) wins++;
     });
 
     // Count wins from team2 games (player was on team 2)
-    player.team2Player1Games.forEach((game) => {
+    player.team2Player1Games.forEach((game: GameScore) => {
       if (game.team2Score > game.team1Score) wins++;
     });
-    player.team2Player2Games.forEach((game) => {
+    player.team2Player2Games.forEach((game: GameScore) => {
       if (game.team2Score > game.team1Score) wins++;
     });
 
