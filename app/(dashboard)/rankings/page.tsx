@@ -39,7 +39,9 @@ export default async function RankingsPage() {
     },
   });
 
-  const playersWithStats = players.map((player, index) => {
+  type PlayerWithRelations = typeof players[0];
+
+  const playersWithStats = players.map((player: PlayerWithRelations, index: number) => {
     const totalGames =
       player._count.team1Player1Games +
       player._count.team1Player2Games +

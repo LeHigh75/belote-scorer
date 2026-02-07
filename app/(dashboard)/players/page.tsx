@@ -7,6 +7,8 @@ export default async function PlayersPage() {
     orderBy: { name: 'asc' },
   });
 
+  type PlayerType = typeof players[0];
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -18,7 +20,7 @@ export default async function PlayersPage() {
         <p className="text-[#a3a3a3]">No players yet. Add your first player to get started!</p>
       ) : (
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {players.map((player) => (
+          {players.map((player: PlayerType) => (
             <PlayerCard key={player.id} player={player} />
           ))}
         </div>
