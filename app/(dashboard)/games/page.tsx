@@ -77,7 +77,7 @@ export default async function GamesPage() {
                 <div className="mt-4 pt-4 border-t border-gray-800">
                   <p className="text-sm text-[#737373] mb-2">ELO Changes:</p>
                   <div className="grid grid-cols-4 gap-2 text-sm">
-                    {game.eloHistory.map((history) => {
+                    {game.eloHistory.map((history: GameWithRelations['eloHistory'][0]) => {
                       const player = [
                         game.team1Player1,
                         game.team1Player2,
