@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/db';
 import { formatDistanceToNow } from 'date-fns';
+import { DeleteGameButton } from '@/components/delete-game-button';
 
 export default async function GamesPage() {
   const games = await prisma.game.findMany({
@@ -38,6 +39,7 @@ export default async function GamesPage() {
                   <p className="text-sm text-[#737373]">
                     {formatDistanceToNow(new Date(game.createdAt), { addSuffix: true })}
                   </p>
+                  <DeleteGameButton gameId={game.id} />
                 </div>
 
                 <div className="grid grid-cols-3 gap-4 items-center">

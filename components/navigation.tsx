@@ -44,7 +44,13 @@ export function Navigation() {
         </li>
       </ul>
 
-      <div className="mt-auto pt-8">
+      <div className="mt-auto pt-8 space-y-2">
+        <Link
+          href="/profile"
+          className="block px-4 py-2 rounded-md text-[#a3a3a3] hover:bg-[#252525] hover:text-[#f5f5f5] transition-colors"
+        >
+          ⚙️ Profil
+        </Link>
         <form action={logoutAction}>
           <button
             type="submit"

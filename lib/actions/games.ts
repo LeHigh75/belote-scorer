@@ -84,3 +84,38 @@ export async function recordGame(data: {
 
   redirect('/games');
 }
+
+export async function deleteGame(gameId: string) {
+  try {
+    await prisma.$transaction(async (tx: Parameters<Parameters<typeof prisma.$transaction>[0]>[0]) => {
+      // Fetch ELO history for this game to revert changes
+      const eloHistories = await tx.eloHistory.findMany({
+        where: { gameId },
+      });
+
+      if (eloHistories.length === 0) {
+        throw new Error('Game not found');
+      }
+
+      // Revert each player's ELO
+      for (const history of eloHistories) {
+        await tx.player.update({
+          where: { id: history.playerId },
+          data: { currentElo: { decrement: history.change } },
+        });
+      }
+
+      // Delete game (EloHistory cascade deletes)
+      await tx.game.delete({ where: { id: gameId } });
+    });
+
+    revalidatePath('/games');
+    revalidatePath('/rankings');
+    revalidatePath('/players');
+  } catch (error) {
+    console.error('Error deleting game:', error);
+    return { error: 'Failed to delete game' };
+  }
+
+  return { success: true };
+}

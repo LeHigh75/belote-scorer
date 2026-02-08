@@ -58,9 +58,7 @@ A modern full-stack web application for scoring belote games, managing players, 
    npm run dev
    ```
 
-6. Open [http://localhost:3000](http://localhost:3000) and login:
-   - Username: `admin`
-   - Password: `admin123`
+6. Open [http://localhost:3000](http://localhost:3000) and login with the admin credentials you configured in `.env.local`.
 
 ## Project Structure
 

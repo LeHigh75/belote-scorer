@@ -13,7 +13,12 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  const passwordHash = await bcrypt.hash('admin123', 10);
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (!adminPassword) {
+    throw new Error('ADMIN_PASSWORD environment variable is not set');
+  }
+
+  const passwordHash = await bcrypt.hash(adminPassword, 10);
 
   await prisma.user.upsert({
     where: { username: 'admin' },
@@ -24,7 +29,7 @@ async function main() {
     }
   });
 
-  console.log('✅ Seed complete: admin user created (username: admin, password: admin123)');
+  console.log('✅ Seed complete: admin user created (username: admin)');
 }
 
 main()
