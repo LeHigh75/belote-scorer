@@ -84,20 +84,20 @@ export default async function RankingsPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-[#f5f5f5] mb-6">ELO Rankings</h1>
+      <h1 className="text-2xl md:text-3xl font-bold text-[#f5f5f5] mb-4 md:mb-6 mt-2 md:mt-0">ELO Rankings</h1>
 
       {playersWithStats.length === 0 ? (
         <p className="text-[#a3a3a3]">No players yet.</p>
       ) : (
-        <div className="bg-[#1a1a1a] rounded-lg border border-gray-800 overflow-hidden">
-          <table className="w-full">
+        <div className="bg-[#1a1a1a] rounded-lg border border-gray-800 overflow-x-auto">
+          <table className="w-full min-w-[480px]">
             <thead className="bg-[#252525]">
               <tr>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-[#f5f5f5]">Rank</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-[#f5f5f5]">Player</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-[#f5f5f5]">ELO</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-[#f5f5f5]">Games</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-[#f5f5f5]">Win Rate</th>
+                <th className="px-3 py-2 md:px-6 md:py-3 text-left text-xs md:text-sm font-semibold text-[#f5f5f5]">Rank</th>
+                <th className="px-3 py-2 md:px-6 md:py-3 text-left text-xs md:text-sm font-semibold text-[#f5f5f5]">Player</th>
+                <th className="px-3 py-2 md:px-6 md:py-3 text-left text-xs md:text-sm font-semibold text-[#f5f5f5]">ELO</th>
+                <th className="px-3 py-2 md:px-6 md:py-3 text-left text-xs md:text-sm font-semibold text-[#f5f5f5]">Games</th>
+                <th className="px-3 py-2 md:px-6 md:py-3 text-left text-xs md:text-sm font-semibold text-[#f5f5f5]">Win %</th>
               </tr>
             </thead>
             <tbody>
@@ -106,7 +106,7 @@ export default async function RankingsPage() {
                   key={player.id}
                   className="border-t border-gray-800 hover:bg-[#252525] transition-colors"
                 >
-                  <td className="px-6 py-4">
+                  <td className="px-3 py-3 md:px-6 md:py-4">
                     <span
                       className={`font-bold ${
                         player.rank === 1
@@ -121,14 +121,14 @@ export default async function RankingsPage() {
                       {player.rank === 1 ? '🥇' : player.rank === 2 ? '🥈' : player.rank === 3 ? '🥉' : player.rank}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-[#f5f5f5] font-medium">{player.name}</td>
-                  <td className="px-6 py-4">
-                    <span className="font-mono text-[#3b82f6] font-semibold">{player.elo}</span>
+                  <td className="px-3 py-3 md:px-6 md:py-4 text-[#f5f5f5] font-medium text-sm md:text-base">{player.name}</td>
+                  <td className="px-3 py-3 md:px-6 md:py-4">
+                    <span className="font-mono text-[#3b82f6] font-semibold text-sm md:text-base">{player.elo}</span>
                   </td>
-                  <td className="px-6 py-4 text-[#a3a3a3]">{player.gamesPlayed}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-3 py-3 md:px-6 md:py-4 text-[#a3a3a3] text-sm md:text-base">{player.gamesPlayed}</td>
+                  <td className="px-3 py-3 md:px-6 md:py-4">
                     <span
-                      className={`${
+                      className={`text-sm md:text-base ${
                         parseFloat(player.winRate) >= 50 ? 'text-[#10b981]' : 'text-[#ef4444]'
                       }`}
                     >

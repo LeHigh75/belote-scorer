@@ -2,9 +2,9 @@ import { loginAction } from '@/lib/actions/auth';
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
-      <div className="w-full max-w-md p-8 bg-[#1a1a1a] rounded-lg shadow-lg border border-gray-800">
-        <h1 className="text-3xl font-bold text-center mb-8 text-[#f5f5f5]">
+    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] px-4">
+      <div className="w-full max-w-md p-6 md:p-8 bg-[#1a1a1a] rounded-lg shadow-lg border border-gray-800">
+        <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 text-[#f5f5f5]">
           Belote Scorer
         </h1>
 

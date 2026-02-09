@@ -54,10 +54,10 @@ export function GameForm({ players }: GameFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
-      <div className="p-6 bg-[#1a1a1a] rounded-lg border border-gray-800">
-        <h2 className="text-xl font-semibold text-[#f5f5f5] mb-4">Team 1</h2>
-        <div className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 max-w-2xl">
+      <div className="p-4 md:p-6 bg-[#1a1a1a] rounded-lg border border-gray-800">
+        <h2 className="text-lg md:text-xl font-semibold text-[#f5f5f5] mb-3 md:mb-4">Team 1</h2>
+        <div className="space-y-3 md:space-y-4">
           <div>
             <label className="block text-sm text-[#a3a3a3] mb-2">Player 1</label>
             <Select value={team1Player1} onValueChange={setTeam1Player1} required>
@@ -109,9 +109,9 @@ export function GameForm({ players }: GameFormProps) {
         </div>
       </div>
 
-      <div className="p-6 bg-[#1a1a1a] rounded-lg border border-gray-800">
-        <h2 className="text-xl font-semibold text-[#f5f5f5] mb-4">Team 2</h2>
-        <div className="space-y-4">
+      <div className="p-4 md:p-6 bg-[#1a1a1a] rounded-lg border border-gray-800">
+        <h2 className="text-lg md:text-xl font-semibold text-[#f5f5f5] mb-3 md:mb-4">Team 2</h2>
+        <div className="space-y-3 md:space-y-4">
           <div>
             <label className="block text-sm text-[#a3a3a3] mb-2">Player 1</label>
             <Select value={team2Player1} onValueChange={setTeam2Player1} required>

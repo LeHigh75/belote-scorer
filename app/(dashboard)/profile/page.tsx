@@ -27,10 +27,10 @@ export default function ProfilePage() {
 
   return (
     <div className="max-w-md">
-      <h1 className="text-3xl font-bold text-[#f5f5f5] mb-8">Profil</h1>
+      <h1 className="text-2xl md:text-3xl font-bold text-[#f5f5f5] mb-6 md:mb-8 mt-2 md:mt-0">Profil</h1>
 
-      <div className="bg-[#1a1a1a] rounded-lg border border-gray-800 p-6">
-        <h2 className="text-xl font-semibold text-[#f5f5f5] mb-6">Changer le mot de passe</h2>
+      <div className="bg-[#1a1a1a] rounded-lg border border-gray-800 p-4 md:p-6">
+        <h2 className="text-lg md:text-xl font-semibold text-[#f5f5f5] mb-4 md:mb-6">Changer le mot de passe</h2>
 
         {message && (
           <div
